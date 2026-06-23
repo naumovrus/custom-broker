@@ -82,6 +82,8 @@ func (b *broker) SetMessage(q, mes string) {
 	defer b.mu.Unlock()
 	if b.queue[q] == nil {
 		b.queue[q] = make([]string, 0)
+	}
+	if b.notifiy[q] == nil {
 		b.notifiy[q] = make(chan struct{})
 	}
 
